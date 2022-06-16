@@ -26,11 +26,12 @@ import com.amore.amoreSearch.indices.Indices;
 public class ProductService {
 	
 	@Value("${ELASTICSEARCH.IP}")
-    private String ip;  // 127.0.0.1:9200,127.0.0.2:9200
+    private String ip;  // 127.0.0.1
 	
 	@Value("${ELASTICSEARCH.PORT}")
-    private int port;  // 127.0.0.1:9200,127.0.0.2:9200
+    private int port;  // 9230
 	
+	// elastic client 접속
 	private RestHighLevelClient client;
 	
 	public SearchResponse searchProduct(String query) {
@@ -42,9 +43,9 @@ public class ProductService {
 		//make Result Set
 		List <Map<String, Object>> arrList = new ArrayList<>();
         
-        FieldSortBuilder categorySortBuilder = SortBuilders.fieldSort("categorysort").order(SortOrder.DESC);
-        FieldSortBuilder priceSortBuilder = SortBuilders.fieldSort("productprice").order(SortOrder.DESC);
-        QueryBuilder queryStringBuilder = QueryBuilders.queryStringQuery(query);
+        FieldSortBuilder categorySortBuilder = SortBuilders.fieldSort("categorysort").order(SortOrder.DESC); // category 정렬
+        FieldSortBuilder priceSortBuilder = SortBuilders.fieldSort("productprice").order(SortOrder.DESC); // 가격 정렬
+        QueryBuilder queryStringBuilder = QueryBuilders.queryStringQuery(query); // 단순키워드
         
         SearchRequest searchRequest = new SearchRequest(Indices.PRPDUCT_INDEX);
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();

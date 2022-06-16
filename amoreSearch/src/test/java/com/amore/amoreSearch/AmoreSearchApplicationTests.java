@@ -14,9 +14,12 @@ class AmoreSearchApplicationTests {
 
 	@Test
 	void elasticsearchTest() {
+		
+		// 검색키워드
 		String query = "손크림";
 		
-		System.out.println(productService.searchProduct(query)); 
+		// 검색결과
+		System.out.println(productService.searchProduct(query));
 		
 	}
 
