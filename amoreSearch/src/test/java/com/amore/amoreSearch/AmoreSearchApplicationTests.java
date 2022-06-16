@@ -16,7 +16,7 @@ class AmoreSearchApplicationTests {
 	void elasticsearchTest() {
 		String query = "손크림";
 		
-		System.out.println(productService.searchProduct(query));
+		System.out.println(productService.searchProduct(query)); 
 		
 	}
 
