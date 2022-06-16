@@ -28,6 +28,8 @@ public class ProductController {
 
 	@GetMapping(value ="/search")
 	public SearchResponse getSearchProduct(){
-		return productService.searchProduct();
+		String query = "손크림";
+		
+		return productService.searchProduct(query);
 	}
 }
